@@ -1,6 +1,6 @@
 # Google Student Training in Engineering Program
 
-This is miahsanchez's README which containts the projects I will be working on for the first half of STEP!
+"This repo contains Miah's portfolio and STEP projects."
 This work is based on the [Google Software Product Sprint](https://g.co/softwareproductsprint) program.
 
 To get started:
