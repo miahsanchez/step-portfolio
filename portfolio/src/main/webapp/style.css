@@ -5,12 +5,14 @@
 }
 
 /* body CSS for a new background color */
-body{
-    background-color: #ffffc6
+body {
+    background-color: #ffffc6;
 }
 
 #content {
   margin-left: auto;
+  position: absolute;
+  left: 100px;
   margin-right: auto;
   width: 650px;
   font-family: roboto;
