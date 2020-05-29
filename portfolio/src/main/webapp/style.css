@@ -1,10 +1,10 @@
-/* added a new font  */
+/* Added a new font.  */
 @font-face {
    font-family: roboto;
    src: url(/fonts/RobotoSlab-Thin.ttf);
 }
 
-/* body CSS for a new background color */
+/* Body CSS for a new background color. */
 body {
     background-color: #ffffc6;
 }
@@ -22,4 +22,52 @@ body {
   margin-top: 20px;
 }
 
+/* First button from the left. */
+#button1 {
+    background: url(/images/hair1.png);
+    position: absolute;
+    top: 25%;
+    left: 15%;
+    width: 15%;
+    height: 30%;
+    background-size: 100%;
+    border: 0;
+}
 
+
+/* Second button from the left. */
+#button2 {
+    background: url(/images/hair2.png);
+    position: absolute;
+    bottom: 25%;
+    left: 30%; /*600px*/
+    width: 15%;
+    height: 30%;
+    background-size: 100%;
+    border: 0;
+}
+
+/* Third button from the left. */
+#button3 {
+    background: url(/images/hair3.png);
+    position: absolute;
+    top: 25%;
+    left: 45%; 
+    width: 15%;
+    height: 30%;
+    background-size: 100%;
+    border: 0;
+}
+
+/* Fourth button from the left. */
+#button4 {
+    background: url(/images/hair4.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 30%;
+    left: 63%;
+    width: 15%;
+    height: 30%;
+    background-size: 100%;
+    border: 0;
+}
