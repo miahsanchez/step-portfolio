@@ -71,3 +71,9 @@ body {
     background-size: 100%;
     border: 0;
 }
+
+#about-me {
+    position: absolute;
+    top: 48%;
+    left: 21.5%;
+}

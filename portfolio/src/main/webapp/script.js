@@ -17,7 +17,7 @@
  */
 function addRandomGreeting() {
   const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+      ['I am 19 years old', 'I am from NYC', 'I make youtube videos', 'I love coding!'];
 
   // Pick a random greeting.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
@@ -25,4 +25,20 @@ function addRandomGreeting() {
   // Add it to the page.
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
+}
+
+/**
+ * Adds the about me label to the page.
+ */
+function b1Scroll() {
+    // Add it to the page.
+    document.getElementById("about-me").innerText = "aboutme";
+}
+
+/**
+ * Removes the about me label from the page.
+ */
+function b1Clear() {
+    // Remove it from the page.
+    document.getElementById("about-me").innerText = "";
 }
