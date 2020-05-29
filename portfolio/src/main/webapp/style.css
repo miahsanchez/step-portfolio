@@ -24,14 +24,13 @@ body {
 
 /* First button from the left. */
 #button1 {
-    background: url(/images/hair1.png);
     position: absolute;
     top: 25%;
     left: 15%;
     width: 15%;
     height: 30%;
-    background-size: 100%;
     border: 0;
+    background: none;
 }
 
 
