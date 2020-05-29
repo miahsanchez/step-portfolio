@@ -31,14 +31,12 @@ function addRandomGreeting() {
  * Adds the about me label to the page.
  */
 function b1Scroll() {
-    // Add it to the page.
-    document.getElementById("about-me").innerText = "aboutme";
+    document.getElementById("about-me").innerText = "about me";
 }
 
 /**
  * Removes the about me label from the page.
  */
 function b1Clear() {
-    // Remove it from the page.
     document.getElementById("about-me").innerText = "";
 }
