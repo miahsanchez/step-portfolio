@@ -28,25 +28,13 @@ function addRandomGreeting() {
 }
 
 /**
- * Fetches the hello message from the server and adds it to the DOM.
+ * Fetches comments from the servers and adds them to the DOM
  */
-function getHello() {
-    console.log("fetching the message");
-    const helloPromise = fetch("/data");
+ function getComments(){
+    fetch('/data').then(response => response.json()).then((stats) => {
+        document.getElementById('comment1').innerText = stats[0];
+        document.getElementById('comment2').innerText = stats[1];
+        document.getElementById('comment3').innerText = stats[2];
 
-    helloPromise.then(handleResponse);
-}
-
-function handleResponse(response) {
-    console.log("handling the response");
-    const responsePromise = response.text();
-
-    responsePromise.then(addHelloToDom);
-}
-
-function addHelloToDom(hello) {
-    console.log("adding hello to DOM: " + hello);
-
-    const helloContainer = document.getElementById('hello-container');
-    helloContainer.innerText = hello;
-}
+    });
+ }
