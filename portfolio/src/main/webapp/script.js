@@ -40,3 +40,26 @@ function labelScroll(id, label) {
 function labelClear(id) {
     document.getElementById(id).innerText = "";
 }
+
+* Fetches the hello message from the server and adds it to the DOM.
+ */
+function getHello() {
+    console.log("fetching the message");
+    const helloPromise = fetch("/data");
+
+    helloPromise.then(handleResponse);
+}
+
+function handleResponse(response) {
+    console.log("handling the response");
+    const responsePromise = response.text();
+
+    responsePromise.then(addHelloToDom);
+}
+
+function addHelloToDom(hello) {
+    console.log("adding hello to DOM: " + hello);
+
+    const helloContainer = document.getElementById('hello-container');
+    helloContainer.innerText = hello;
+}
