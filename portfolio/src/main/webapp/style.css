@@ -1,7 +1,13 @@
-/* Added a new font.  */
+/* Added Roboto font.  */
 @font-face {
    font-family: roboto;
    src: url(/fonts/RobotoSlab-Thin.ttf);
+}
+
+/* Added Barrio font. */
+@font-face {
+    font-family: barrio;
+    src: url(/fonts/Barrio-Regular.ttf);
 }
 
 /* Body CSS for a new background color. */
@@ -23,24 +29,23 @@ body {
 }
 
 /* First button from the left. */
-#button1 {
-    background: url(/images/hair1.png);
+#aboutme-page-image-link {
+    background: none;
     position: absolute;
     top: 25%;
     left: 15%;
     width: 15%;
     height: 30%;
-    background-size: 100%;
     border: 0;
 }
 
 
 /* Second button from the left. */
-#button2 {
+#cs-page-image-link {
     background: url(/images/hair2.png);
     position: absolute;
     bottom: 25%;
-    left: 30%; /*600px*/
+    left: 30%;
     width: 15%;
     height: 30%;
     background-size: 100%;
@@ -48,7 +53,7 @@ body {
 }
 
 /* Third button from the left. */
-#button3 {
+#youtube-page-image-link {
     background: url(/images/hair3.png);
     position: absolute;
     top: 25%;
@@ -60,7 +65,7 @@ body {
 }
 
 /* Fourth button from the left. */
-#button4 {
+#funfact-page-image-link {
     background: url(/images/hair4.png);
     background-repeat: no-repeat;
     position: absolute;
@@ -71,3 +76,23 @@ body {
     background-size: 100%;
     border: 0;
 }
+
+/* About me label. */
+#about-me-image-label {
+    position: absolute;
+    top: 47%;
+    left: 20.8%;
+    font-family: barrio;
+    font-size: 24px;
+    color: white;
+}
+
+ /* CS page link label. */
+ #cs-page-image-label {
+     position: absolute;
+     bottom: 27%;
+     left: 37%;
+     font-family: barrio;
+     font-size: 24px;
+     color: white;
+ }

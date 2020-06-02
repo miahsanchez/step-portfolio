@@ -7,13 +7,35 @@
     <script src="script.js"></script>
   </head>
   <body>
-    <button id="button1"> </button>
-    <button id="button2"> </button>
-    <button id="button3"> </button>
-    <button id="button4"> </button>
-    <button onclick="getComments()">Get some Comments!</button>
-    <h1 id='comment1'></h1>
-    <h1 id='comment2'></h1>
-    <h1 id='comment3'></h1>
+    <div id="content">
+      <h1>Miah's Portfolio</h1>
+      
+      <p>Click here to get a random message:</p>
+      <button onclick="addRandomGreeting()">Hello</button>
+      <div id="greeting-container"></div>
+    </div>
+
+    <div id='home-buttons'>
+        <a href="aboutme.html">
+            <img src="/images/hair1.png" id="aboutme-page-image-link" alt="short hair"
+            onmousemove="labelScroll('about-me-image-label', 'about me')" 
+            onmouseout="labelClear('about-me-image-label')">
+        </a>
+        <p id="about-me-image-label"></p>
+        <a href="cs-page.html">
+            <img src="/images/hair2.png" id="cs-page-image-link" alt="hair puffs"
+            onmousemove="labelScroll('cs-page-image-label', 'CS')"
+            onmouseout="labelClear('cs-page-image-label')">
+        </a>
+        <p id="cs-page-image-label"></p>
+        <a href="youtube.html">
+            <img src="/images/hair3.png" id="youtube-page-image-link" alt="high puff">
+        </a>
+        <a href="facts.html">
+            <img src="/images/hair4.png" id="funfact-page-image-link" alt="afro">
+        </a>
+    </div>
+    <button onclick="getHello()">Say Hi!</button>
+    <h1 id='hello-container'></h1>
   </body>
 </html>
