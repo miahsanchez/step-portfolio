@@ -41,7 +41,8 @@ function labelClear(id) {
     document.getElementById(id).innerText = "";
 }
 
-* Fetches the hello message from the server and adds it to the DOM.
+/** 
+ * Fetches the hello message from the server and adds it to the DOM.
  */
 function getHello() {
     console.log("fetching the message");

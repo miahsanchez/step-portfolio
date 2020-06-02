@@ -1,7 +1,13 @@
-/* Added a new font.  */
+/* Added Roboto font.  */
 @font-face {
    font-family: roboto;
    src: url(/fonts/RobotoSlab-Thin.ttf);
+}
+
+/* Added Barrio font. */
+@font-face {
+    font-family: barrio;
+    src: url(/fonts/Barrio-Regular.ttf);
 }
 
 /* Body CSS for a new background color. */
@@ -23,14 +29,13 @@ body {
 }
 
 /* First button from the left. */
-#button1 {
-    background: url(/images/hair1.png);
+#aboutme-page-image-link {
+    background: none;
     position: absolute;
     top: 25%;
     left: 15%;
     width: 15%;
     height: 30%;
-    background-size: 100%;
     border: 0;
 }
 
@@ -73,8 +78,11 @@ body {
 }
 
 /* About me label. */
-#about-me {
+#about-me-label {
     position: absolute;
-    top: 48%;
-    left: 21.5%;
+    top: 47%;
+    left: 20.8%;
+    font-family: barrio;
+    font-size: 24px;
+    color: white;
 }
