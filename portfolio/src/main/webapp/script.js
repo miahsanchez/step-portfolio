@@ -28,15 +28,38 @@ function addRandomGreeting() {
 }
 
 /**
- * Adds the about me label to the page.
+ * Adds the button label to the page.
  */
-function b1Scroll() {
-    document.getElementById("about-me").innerText = "about me";
+function labelScroll(id, label) {
+        document.getElementById(id).innerText = label;
 }
 
 /**
- * Removes the about me label from the page.
+ * Removes the button label from the page.
  */
-function b1Clear() {
-    document.getElementById("about-me").innerText = "";
+function labelClear(id) {
+    document.getElementById(id).innerText = "";
+}
+
+* Fetches the hello message from the server and adds it to the DOM.
+ */
+function getHello() {
+    console.log("fetching the message");
+    const helloPromise = fetch("/data");
+
+    helloPromise.then(handleResponse);
+}
+
+function handleResponse(response) {
+    console.log("handling the response");
+    const responsePromise = response.text();
+
+    responsePromise.then(addHelloToDom);
+}
+
+function addHelloToDom(hello) {
+    console.log("adding hello to DOM: " + hello);
+
+    const helloContainer = document.getElementById('hello-container');
+    helloContainer.innerText = hello;
 }
