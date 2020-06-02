@@ -96,3 +96,23 @@ body {
      font-size: 24px;
      color: white;
  }
+
+ /* Youtube page link label. */
+ #youtube-page-image-label {
+     position: absolute;
+     top: 49%;
+     left: 50.5%;
+     font-family: barrio;
+     font-size: 24px;
+     color: white;
+ }
+
+ /* Fun facts page link label. */
+ #funfacts-page-image-label {
+     position: absolute;
+     bottom: 27%;
+     left: 68.5%;
+     font-family: barrio;
+     font-size: 24px;
+     color: white;
+ }
