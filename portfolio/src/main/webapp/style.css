@@ -45,7 +45,7 @@ body {
     background: url(/images/hair2.png);
     position: absolute;
     bottom: 25%;
-    left: 30%; /*600px*/
+    left: 30%;
     width: 15%;
     height: 30%;
     background-size: 100%;
@@ -78,7 +78,7 @@ body {
 }
 
 /* About me label. */
-#about-me-label {
+#about-me-image-label {
     position: absolute;
     top: 47%;
     left: 20.8%;
@@ -86,3 +86,13 @@ body {
     font-size: 24px;
     color: white;
 }
+
+ /* CS page link label. */
+ #cs-page-image-label {
+     position: absolute;
+     bottom: 27%;
+     left: 37%;
+     font-family: barrio;
+     font-size: 24px;
+     color: white;
+ }
