@@ -39,11 +39,14 @@
             onmouseout="labelClear('youtube-page-image-label')">
         </a>
         <p id="youtube-page-image-label"></p>
-        
+
         <!-- Fun facts page link and label. -->
         <a href="facts.html">
-            <img src="/images/hair4.png" id="funfact-page-image-link" alt="afro">
+            <img src="/images/hair4.png" id="funfact-page-image-link" alt="afro"
+            onmousemove="labelScroll('funfacts-page-image-label', 'fun facts')" 
+            onmouseout="labelClear('funfacts-page-image-label')">
         </a>
+        <p id="funfacts-page-image-label"></p>
     </div>
     <button onclick="getHello()">Say Hi!</button>
     <h1 id='hello-container'></h1>
