@@ -29,7 +29,7 @@ body {
 }
 
 /* First button from the left. */
-#button1 {
+#aboutme-page-image-link {
     background: none;
     position: absolute;
     top: 25%;
@@ -78,7 +78,7 @@ body {
 }
 
 /* About me label. */
-#about-me {
+#about-me-label {
     position: absolute;
     top: 47%;
     left: 20.8%;
