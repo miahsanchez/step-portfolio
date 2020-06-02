@@ -17,7 +17,7 @@
  */
 function addRandomGreeting() {
   const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+      ['I am 19 years old', 'I am from NYC', 'I make youtube videos', 'I love coding!'];
 
   // Pick a random greeting.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
@@ -25,4 +25,41 @@ function addRandomGreeting() {
   // Add it to the page.
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
+}
+
+/**
+ * Adds the button label to the page.
+ */
+function labelScroll(id, label) {
+        document.getElementById(id).innerText = label;
+}
+
+/**
+ * Removes the button label from the page.
+ */
+function labelClear(id) {
+    document.getElementById(id).innerText = "";
+}
+
+* Fetches the hello message from the server and adds it to the DOM.
+ */
+function getHello() {
+    console.log("fetching the message");
+    const helloPromise = fetch("/data");
+
+    helloPromise.then(handleResponse);
+}
+
+function handleResponse(response) {
+    console.log("handling the response");
+    const responsePromise = response.text();
+
+    responsePromise.then(addHelloToDom);
+}
+
+function addHelloToDom(hello) {
+    console.log("adding hello to DOM: " + hello);
+
+    const helloContainer = document.getElementById('hello-container');
+    helloContainer.innerText = hello;
 }

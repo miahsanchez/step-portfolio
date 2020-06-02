@@ -14,10 +14,13 @@
       <button onclick="addRandomGreeting()">Hello</button>
       <div id="greeting-container"></div>
     </div>
+    <button id="button1" onmousemove="labelScroll('about-me', 'about me')" onmouseout="labelClear('about-me')"></button>
+    <p id="about-me"></p>
     <button id="button1"> </button>
     <button id="button2"> </button>
     <button id="button3"> </button>
-    <button id="button4"> </button>
     <a href="facts.html"><img src="/images/hair4.png" id="funfact-page-image-link" alt="afro"></a>
+    <button onclick="getHello()">Say Hi!</button>
+    <h1 id='hello-container'></h1>
   </body>
 </html>
