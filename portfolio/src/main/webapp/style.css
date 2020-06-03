@@ -12,7 +12,7 @@
 
 /* Body CSS for a new background color. */
 body {
-    background-color: #ffffc6;
+    background-color: #78a2ef;
 }
 
 #content {
@@ -96,3 +96,33 @@ body {
      font-size: 24px;
      color: white;
  }
+
+ #home-page-name {
+     position: absolute;
+     font-family: barrio;
+     writing-mode: vertical-rl;
+     text-orientation: upright;
+     color:white;
+     font-size: 72px;
+     top: 4%;
+     right: 3%;
+
+ /* Youtube page link label. */
+ #youtube-page-image-label {
+     position: absolute;
+     top: 49%;
+     left: 50.5%;
+     font-family: barrio;
+     font-size: 24px;
+     color: white;
+ }
+
+ /* Fun facts page link label. */
+ #funfacts-page-image-label {
+     position: absolute;
+     bottom: 27%;
+     left: 68.5%;
+     font-family: barrio;
+     font-size: 24px;
+     color: white;
+}
