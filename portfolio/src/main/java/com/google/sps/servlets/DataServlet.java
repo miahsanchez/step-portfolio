@@ -29,4 +29,11 @@ public class DataServlet extends HttpServlet {
     response.setContentType("text/html;");
     response.getWriter().println("<h1>Hello Miah!</h1>");
   }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+      String userInput = request.getParameter("user-input");
+      response.setContentType("text/html;"); //need to look at subtract bc i dont want a new page
+      response.getWriter().println("Thanks for the idea! If I ever make a video about " + userInput + " you'll be the first to know");
+  }
 }
