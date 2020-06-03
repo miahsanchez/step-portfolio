@@ -35,18 +35,18 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      String userInput = request.getParameter("user-input");
+      String userIdea = request.getParameter("user-input");
       long timestamp = System.currentTimeMillis();
 
       Entity youtubeEntity = new Entity("Youtube Idea");
-      youtubeEntity.setProperty("idea", userInput);
+      youtubeEntity.setProperty("idea", userIdea);
       youtubeEntity.setProperty("timestamp", timestamp);
       
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();      
       datastore.put(youtubeEntity);
 
       response.setContentType("text/html;");
-      response.getWriter().println("Thanks for the idea! If I ever make a video about " + userInput + " you'll be the first to know");
+      response.getWriter().println("Thanks for the idea! If I ever make a video about " + userIdea + " you'll be the first to know");
 
   }
 }
