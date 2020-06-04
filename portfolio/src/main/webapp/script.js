@@ -64,3 +64,19 @@ function addHelloToDom(hello) {
     const helloContainer = document.getElementById('hello-container');
     helloContainer.innerText = hello;
 }
+
+function loadComments() {
+    fetch('/data').then(response => response.json()).then((ideas) => {
+        const ideaListElement = document.getElementById('idea-list');
+        ideas.forEach((idea) => {
+            ideaListElement.appendChild(createIdeaElement(idea));
+        })
+    });
+}
+
+function createIdeaElement(idea){
+    const ideaElement = document.createElement('li');
+    // const titleElement = document.createElement('span');
+    ideaElement.innerText = idea;
+    return ideaElement;
+}

@@ -22,6 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
@@ -36,9 +39,8 @@ public class DataServlet extends HttpServlet {
 
     List<String> ideas = new ArrayList<>();
     for (Entity entity: results.asIterable()) {
-        long id = entity.getKey().getId();
         String idea = (String) entity.getProperty("idea");
-        long timestamp = (long) entity.getProperty("timestamp");
+        long timestamp = (long) entity.getProperty("timestamp"); //let's see if i need this line
 
         ideas.add(idea);
     }
