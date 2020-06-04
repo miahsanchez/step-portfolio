@@ -29,8 +29,19 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello Miah!</h1>");
+    Query query = new Query("Youtube Idea").addSort("timestamp", SortDirection.DESCENDING);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery results = datastore.prepare(query);
+
+    List<String> ideas = new ArrayList<>();
+    for (Entity entity: results.asIterable()) {
+        long id = entity.getKey().getId();
+        String idea = (String) entity.getProperty("idea");
+        long timestamp = (long) entity.getProperty("timestamp");
+
+        ideas.add(idea);
+    }
   }
 
   @Override
