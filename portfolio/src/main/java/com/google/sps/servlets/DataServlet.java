@@ -19,10 +19,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.DatastoreService;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
+    
+  private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -32,8 +37,18 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      String userInput = request.getParameter("user-input");
+      String userIdea = request.getParameter("user-input");
+      long timestamp = System.currentTimeMillis();
+
+      Entity youtubeEntity = new Entity("Youtube Idea");
+      // Empty String will not be added as an idea, handled on client side.
+      youtubeEntity.setProperty("idea", userIdea);
+      youtubeEntity.setProperty("timestamp", timestamp);
+           
+      datastore.put(youtubeEntity);
+
       response.setContentType("text/html;");
-      response.getWriter().println("Thanks for the idea! If I ever make a video about " + userInput + " you'll be the first to know");
+      response.getWriter().println("Thanks for the idea! If I ever make a video about " + userIdea + " you'll be the first to know");
+
   }
 }
