@@ -43,6 +43,7 @@ function labelClear(id) {
 
 /** 
  * Fetches the hello message from the server and adds it to the DOM.
+*  TODO: Refactor this code to be more dynamic
  */
  function getComments(){
     fetch('/data').then(response => response.json()).then((stats) => {

@@ -23,13 +23,14 @@ import java.util.ArrayList;
 import java.util.List; 
 import com.google.gson.Gson;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+/** Servlet that returns some example content. */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+    // TODO:  Make ArrayList more abstract aka make it a List.
     ArrayList<String> sampleContents = new ArrayList<String>();
     sampleContents.add("My name is Miah");
     sampleContents.add("Im from NYC");
