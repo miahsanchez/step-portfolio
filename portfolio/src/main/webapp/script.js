@@ -41,31 +41,6 @@ function labelClear(id) {
     document.getElementById(id).innerText = "";
 }
 
-/** 
- * Fetches the hello message from the server and adds it to the DOM.
-*  TODO: Refactor this code to be more dynamic
- */
-function getHello() {
-    console.log("fetching the message");
-    const helloPromise = fetch("/data");
-
-    helloPromise.then(handleResponse);
-}
-
-function handleResponse(response) {
-    console.log("handling the response");
-    const responsePromise = response.text();
-
-    responsePromise.then(addHelloToDom);
-}
-
-function addHelloToDom(hello) {
-    console.log("adding hello to DOM: " + hello);
-
-    const helloContainer = document.getElementById('hello-container');
-    helloContainer.innerText = hello;
-}
-
 function loadComments() {
     fetch('/data').then(response => response.json()).then((ideas) => {
         const ideaListElement = document.getElementById('idea-list');
