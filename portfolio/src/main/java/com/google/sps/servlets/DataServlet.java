@@ -19,7 +19,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.*; 
+import java.util.ArrayList;
+import java.util.List; 
 import com.google.gson.Gson;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
@@ -29,24 +30,15 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-    ArrayList<String> list = new ArrayList<String>();
-    list.add("My name is Miah");
-    list.add("Im from NYC");
-    list.add("I love coding!");
+    ArrayList<String> sampleContents = new ArrayList<String>();
+    sampleContents.add("My name is Miah");
+    sampleContents.add("Im from NYC");
+    sampleContents.add("I love coding!");
 
     // Send the JSON as the response
-    String json = convertToJsonUsingGson(list);
+    String json = convertToJsonUsingGson(sampleContents);
+    String jsonComment = new Gson().toJson(sampleContents);
     response.setContentType("application/json;");
     response.getWriter().println(json);
-  }
-
-  /**
-   * Converts a ServerStats instance into a JSON string using the Gson library. Note: We first added
-   * the Gson library dependency to pom.xml.
-   */
-  private String convertToJsonUsingGson(ArrayList<String> comments) {
-    Gson gson = new Gson();
-    String json = gson.toJson(comments);
-    return json;
   }
 }
