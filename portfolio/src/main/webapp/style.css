@@ -39,10 +39,9 @@ body {
     border: 0;
 }
 
-
 /* Second button from the left. */
 #cs-page-image-link {
-    background: url(/images/hair2.png);
+    background: none;
     position: absolute;
     bottom: 25%;
     left: 30%;
@@ -54,7 +53,7 @@ body {
 
 /* Third button from the left. */
 #youtube-page-image-link {
-    background: url(/images/hair3.png);
+    background: none;
     position: absolute;
     top: 25%;
     left: 45%; 
@@ -66,7 +65,7 @@ body {
 
 /* Fourth button from the left. */
 #funfact-page-image-link {
-    background: url(/images/hair4.png);
+    background: none;
     background-repeat: no-repeat;
     position: absolute;
     bottom: 30%;
@@ -77,14 +76,18 @@ body {
     border: 0;
 }
 
+/* Styling for image labels. */
+#page-image-labels {
+    font-family: barrio;
+    font-size: 24px;
+    color: white;   
+}
+
 /* About me label. */
 #about-me-image-label {
     position: absolute;
     top: 47%;
     left: 20.8%;
-    font-family: barrio;
-    font-size: 24px;
-    color: white;
 }
 
  /* CS page link label. */
@@ -92,10 +95,22 @@ body {
      position: absolute;
      bottom: 27%;
      left: 37%;
-     font-family: barrio;
-     font-size: 24px;
-     color: white;
  }
+
+
+ /* Youtube page link label. */
+ #youtube-page-image-label {
+     position: absolute;
+     top: 49%;
+     left: 50.5%;
+ }
+
+ /* Fun facts page link label. */
+ #funfacts-page-image-label {
+     position: absolute;
+     bottom: 27%;
+     left: 68.5%;
+}
 
  #home-page-name {
      position: absolute;
@@ -106,23 +121,4 @@ body {
      font-size: 72px;
      top: 4%;
      right: 3%;
-
- /* Youtube page link label. */
- #youtube-page-image-label {
-     position: absolute;
-     top: 49%;
-     left: 50.5%;
-     font-family: barrio;
-     font-size: 24px;
-     color: white;
  }
-
- /* Fun facts page link label. */
- #funfacts-page-image-label {
-     position: absolute;
-     bottom: 27%;
-     left: 68.5%;
-     font-family: barrio;
-     font-size: 24px;
-     color: white;
-}

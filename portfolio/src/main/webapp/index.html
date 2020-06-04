@@ -9,22 +9,20 @@
   <body>
     <h1 id="home-page-name">Miah K Sanchez</h1>
 
-    <div id='home-buttons'>
-        <!-- About me image link and label. -->
+    <div id='page-image-links'>
+        <!-- About me image link. -->
         <a href="aboutme.html">
             <img src="/images/hair1.png" id="aboutme-page-image-link" alt="short hair"
             onmousemove="labelScroll('about-me-image-label', 'about me')" 
             onmouseout="labelClear('about-me-image-label')">
         </a>
-        <p id="about-me-image-label"></p>
 
-        <!-- CS page image link and label. -->
+        <!-- CS page image link. -->
         <a href="cs-page.html">
             <img src="/images/hair2.png" id="cs-page-image-link" alt="hair puffs"
             onmousemove="labelScroll('cs-page-image-label', 'CS')"
             onmouseout="labelClear('cs-page-image-label')">
         </a>
-        <p id="cs-page-image-label"></p>
 
         <!-- Youtube page link and label. -->
         <a href="youtube.html">
@@ -32,7 +30,6 @@
             onmousemove="labelScroll('youtube-page-image-label', 'youtube')" 
             onmouseout="labelClear('youtube-page-image-label')">
         </a>
-        <p id="youtube-page-image-label"></p>
 
         <!-- Fun facts page link and label. -->
         <a href="facts.html">
@@ -40,6 +37,13 @@
             onmousemove="labelScroll('funfacts-page-image-label', 'fun facts')" 
             onmouseout="labelClear('funfacts-page-image-label')">
         </a>
+    </div>
+
+    <!-- Labels for the home buttons. -->
+    <div id="page-image-labels">
+        <p id="about-me-image-label"></p>
+        <p id="cs-page-image-label"></p>
+        <p id="youtube-page-image-label"></p>
         <p id="funfacts-page-image-label"></p>
     </div>
     <button onclick="getHello()">Say Hi!</button>
