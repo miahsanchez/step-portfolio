@@ -52,7 +52,6 @@ function loadComments() {
 
 function createIdeaElement(idea){
     const ideaElement = document.createElement('li');
-    // const titleElement = document.createElement('span');
     ideaElement.innerText = idea;
     return ideaElement;
 }

@@ -46,7 +46,7 @@ public class DataServlet extends HttpServlet {
 
         ideas.add(idea);
     }
-        System.out.println("THE IDEAS ARE: " + ideas);
+
     Gson gson = new Gson();
 
     response.setContentType("application/json;");
