@@ -35,7 +35,7 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    Query query = new Query("Youtube Idea").addSort("timestamp", SortDirection.DESCENDING);
+    Query query = new Query("Youtube Idea").addSort("timestamp", SortDirection.ASCENDING);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
@@ -43,7 +43,6 @@ public class DataServlet extends HttpServlet {
     List<String> ideas = new ArrayList<>();
     for (Entity entity: results.asIterable()) {
         String idea = (String) entity.getProperty("idea");
-        long timestamp = (long) entity.getProperty("timestamp"); //let's see if i need this line
 
         ideas.add(idea);
     }
@@ -51,7 +50,6 @@ public class DataServlet extends HttpServlet {
     Gson gson = new Gson();
 
     response.setContentType("application/json;");
-    // System.out.println("The json is: ", gson.toJson(ideas));
     response.getWriter().println(gson.toJson(ideas));
 
   }
@@ -68,8 +66,6 @@ public class DataServlet extends HttpServlet {
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();      
       datastore.put(youtubeEntity);
 
-      response.setContentType("text/html;");
-      response.getWriter().println("Thanks for the idea! If I ever make a video about " + userIdea + " you'll be the first to know");
-
+      response.sendRedirect("/youtube.html");
   }
 }

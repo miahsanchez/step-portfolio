@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <title>Youtube</title>
     <link rel="stylesheet" href="youtube-style.css">
-    <script src="youtube_script.js"></script>
+    <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="loadComments()">
       <form action="/data" method="POST">
         <label for="user-input">What's a youtube video idea you have for me?</label><br>
         <textarea name="user-input">Put your idea here!</textarea>
         <br><br><br>
         <input type="submit" />     
       </form>
-      <ul id="idea-list">
-          <li>Element 1</li>
-      </ul>
+      <ul id="idea-list"></ul>
   </body>
 </html>
