@@ -26,6 +26,8 @@ import com.google.appengine.api.datastore.DatastoreService;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
+    
+  private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -36,18 +38,13 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
       String userIdea = request.getParameter("user-input");
-
-      // Empty String or original textarea string will not be added.
-      if (userIdea.trim().equals("") || userIdea.trim().equals("Put your idea here!")) {
-          return;
-      }
       long timestamp = System.currentTimeMillis();
 
       Entity youtubeEntity = new Entity("Youtube Idea");
+      // Empty String will not be added as an idea, handled on client side.
       youtubeEntity.setProperty("idea", userIdea);
       youtubeEntity.setProperty("timestamp", timestamp);
-      
-      final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();      
+           
       datastore.put(youtubeEntity);
 
       response.setContentType("text/html;");
