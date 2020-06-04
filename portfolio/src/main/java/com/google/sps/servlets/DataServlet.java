@@ -25,8 +25,11 @@ import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import java.util.ArrayList;
+import java.util.List; 
+import com.google.gson.Gson;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+/** Servlet that returns some example content. */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
@@ -44,6 +47,13 @@ public class DataServlet extends HttpServlet {
 
         ideas.add(idea);
     }
+        System.out.println("THE IDEAS ARE: " + ideas);
+    Gson gson = new Gson();
+
+    response.setContentType("application/json;");
+    // System.out.println("The json is: ", gson.toJson(ideas));
+    response.getWriter().println(gson.toJson(ideas));
+
   }
 
   @Override

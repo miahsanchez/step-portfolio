@@ -43,6 +43,7 @@ function labelClear(id) {
 
 /** 
  * Fetches the hello message from the server and adds it to the DOM.
+*  TODO: Refactor this code to be more dynamic
  */
 function getHello() {
     console.log("fetching the message");
@@ -80,3 +81,12 @@ function createIdeaElement(idea){
     ideaElement.innerText = idea;
     return ideaElement;
 }
+
+function getComments(){
+    fetch('/data').then(response => response.json()).then((stats) => {
+        document.getElementById('comment1').innerText = stats[0];
+        document.getElementById('comment2').innerText = stats[1];
+        document.getElementById('comment3').innerText = stats[2];
+
+    });
+ }
