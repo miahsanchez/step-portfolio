@@ -36,13 +36,18 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
       String userIdea = request.getParameter("user-input");
+
+      // Empty String or original textarea string will not be added.
+      if (userIdea.trim().equals("") || userIdea.trim().equals("Put your idea here!")) {
+          return;
+      }
       long timestamp = System.currentTimeMillis();
 
       Entity youtubeEntity = new Entity("Youtube Idea");
       youtubeEntity.setProperty("idea", userIdea);
       youtubeEntity.setProperty("timestamp", timestamp);
       
-      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();      
+      final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();      
       datastore.put(youtubeEntity);
 
       response.setContentType("text/html;");
