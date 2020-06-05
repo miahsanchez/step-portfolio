@@ -32,6 +32,8 @@ import com.google.gson.Gson;
 /** Servlet that returns some example content. */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
+    
+  private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -60,10 +62,10 @@ public class DataServlet extends HttpServlet {
       long timestamp = System.currentTimeMillis();
 
       Entity youtubeEntity = new Entity("Youtube Idea");
+      // Empty String will not be added as an idea, handled on client side.
       youtubeEntity.setProperty("idea", userIdea);
       youtubeEntity.setProperty("timestamp", timestamp);
-      
-      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();      
+           
       datastore.put(youtubeEntity);
 
       response.sendRedirect("/youtube.html");
