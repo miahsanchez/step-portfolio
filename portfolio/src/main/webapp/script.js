@@ -56,11 +56,3 @@ function createIdeaElement(idea){
     return ideaElement;
 }
 
-function getComments(){
-    fetch('/data').then(response => response.json()).then((stats) => {
-        document.getElementById('comment1').innerText = stats[0];
-        document.getElementById('comment2').innerText = stats[1];
-        document.getElementById('comment3').innerText = stats[2];
-
-    });
- }
