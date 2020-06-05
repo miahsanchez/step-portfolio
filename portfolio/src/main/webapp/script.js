@@ -53,6 +53,14 @@ function loadComments() {
 function createIdeaElement(idea){
     const ideaElement = document.createElement('li');
     ideaElement.className = 'idea';
-    ideaElement.innerText = idea;
+
+    const ideaTitle = document.createElement('span'); 
+    ideaTitle.innerText = idea;
+
+    const upVoteButton = document.createElement("button");
+    upVoteButton.className = "upvote-button";
+
+    ideaElement.appendChild(ideaTitle);
+    ideaElement.appendChild(upVoteButton);
     return ideaElement;
 }
