@@ -35,7 +35,6 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-    // TODO:  Make ArrayList more abstract aka make it a List.
     List<String> sampleContents = new ArrayList<String>();
     sampleContents.add("My name is Miah");
     sampleContents.add("Im from NYC");
