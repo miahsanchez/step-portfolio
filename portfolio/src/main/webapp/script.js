@@ -73,6 +73,7 @@ function createIdeaElement(idea){
     return ideaElement;
 }
 
+/** Tells the server to increase the upvote value of this idea by 1. */
 function addVote(idea) {
     const params = new URLSearchParams();
     params.append('id', idea.id);
