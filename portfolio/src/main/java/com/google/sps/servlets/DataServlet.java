@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.DatastoreService;
@@ -28,6 +29,14 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 import java.util.ArrayList;
 import java.util.List; 
 import com.google.gson.Gson;
+=======
+import java.util.ArrayList;
+import java.util.List; 
+import com.google.gson.Gson;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.DatastoreService;
+>>>>>>> d11fada1a1ec4ca77802dc451602e83ab43e5426
 
 /** Servlet that returns some example content. */
 @WebServlet("/data")
@@ -50,7 +59,6 @@ public class DataServlet extends HttpServlet {
 
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(ideas));
-
   }
 
   @Override
