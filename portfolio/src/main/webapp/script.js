@@ -68,3 +68,4 @@ function createIdeaElement(idea){
     ideaElement.appendChild(numVotes);
     return ideaElement;
 }
+
