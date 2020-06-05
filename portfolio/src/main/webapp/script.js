@@ -59,13 +59,23 @@ function createIdeaElement(idea){
 
     const upVoteButton = document.createElement("button");
     upVoteButton.className = "upvote-button";
+    upVoteButton.addEventListener('click', () => {
+        addVote(idea);
+        numVotes.innerText = idea.upVotes + 1;
+    });
 
     const numVotes = document.createElement("p");
-    numVotes.innerText = "0";
+    numVotes.innerText = idea.upVotes;
 
     ideaElement.appendChild(ideaTitle);
     ideaElement.appendChild(upVoteButton);
     ideaElement.appendChild(numVotes);
     return ideaElement;
+}
+
+function addVote(idea) {
+    const params = new URLSearchParams();
+    params.append('id', idea.id);
+    fetch('/vote', {method: 'POST', body: params});
 }
 
