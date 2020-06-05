@@ -56,3 +56,4 @@ function createIdeaElement(idea){
     ideaElement.innerText = idea;
     return ideaElement;
 }
+
