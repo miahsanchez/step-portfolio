@@ -28,6 +28,7 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 import java.util.ArrayList;
 import java.util.List; 
 import com.google.gson.Gson;
+import com.google.sps.data.Idea;
 
 /** Servlet that returns some example content. */
 @WebServlet("/data")
@@ -42,14 +43,14 @@ public class DataServlet extends HttpServlet {
 
     PreparedQuery results = datastore.prepare(query);
 
-    List<String> ideas = new ArrayList<>();
+    List<Idea> ideas = new ArrayList<>();
     for (Entity entity: results.asIterable()) {
         long id = entity.getKey().getId();
-        String idea = (String) entity.getProperty("idea");
+        String ideaName = (String) entity.getProperty("idea");
         long timestamp = (long) entity.getProperty("timestamp");
-        int upVotes = (int) entity.getProperty("upVotes");
+        long upVotes = (long) entity.getProperty("upVotes");
 
-        Idea newIdea = new Idea(id, idea, timestamp, upVotes);
+        Idea newIdea = new Idea(id, ideaName, timestamp, upVotes);
         ideas.add(newIdea);
     }
 

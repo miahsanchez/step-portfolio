@@ -55,7 +55,7 @@ function createIdeaElement(idea){
     ideaElement.className = 'idea';
 
     const ideaTitle = document.createElement('span'); 
-    ideaTitle.innerText = idea;
+    ideaTitle.innerText = idea.ideaName;
 
     const upVoteButton = document.createElement("button");
     upVoteButton.className = "upvote-button";
