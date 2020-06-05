@@ -44,8 +44,13 @@ public class DataServlet extends HttpServlet {
 
     List<String> ideas = new ArrayList<>();
     for (Entity entity: results.asIterable()) {
+        long id = entity.getKey().getId();
         String idea = (String) entity.getProperty("idea");
-        ideas.add(idea);
+        long timestamp = (long) entity.getProperty("timestamp");
+        int upVotes = (int) entity.getProperty("upVotes");
+
+        Idea newIdea = new Idea(id, idea, timestamp, upVotes);
+        ideas.add(newIdea);
     }
 
     response.setContentType("application/json;");
@@ -61,6 +66,7 @@ public class DataServlet extends HttpServlet {
       // Empty String will not be added as an idea, handled on client side.
       youtubeEntity.setProperty("idea", userIdea);
       youtubeEntity.setProperty("timestamp", timestamp);
+      youtubeEntity.setProperty("upVotes", 0);
            
       datastore.put(youtubeEntity);
 
