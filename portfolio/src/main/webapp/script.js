@@ -53,7 +53,19 @@ function loadComments() {
 function createIdeaElement(idea){
     const ideaElement = document.createElement('li');
     ideaElement.className = 'idea';
-    ideaElement.innerText = idea;
+
+    const ideaTitle = document.createElement('span'); 
+    ideaTitle.innerText = idea;
+
+    const upVoteButton = document.createElement("button");
+    upVoteButton.className = "upvote-button";
+
+    const numVotes = document.createElement("p");
+    numVotes.innerText = "0";
+
+    ideaElement.appendChild(ideaTitle);
+    ideaElement.appendChild(upVoteButton);
+    ideaElement.appendChild(numVotes);
     return ideaElement;
 }
 
