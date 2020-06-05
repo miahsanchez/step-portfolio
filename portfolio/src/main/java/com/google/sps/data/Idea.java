@@ -15,16 +15,16 @@
 package com.google.sps.data;
 
 /** An item on a list of youtube ideas. */
-public final class Idea {
+public class Idea {
 
   private final long id;
-  private final String idea;
+  private final String ideaName;
   private final long timestamp;
   private int upVotes;
 
-  public Task(long id, String idea, long timestamp, int upVotes) {
+  public Idea(long id, String ideaName, long timestamp, int upVotes) {
     this.id = id;
-    this.idea = idea;
+    this.ideaName = ideaName;
     this.timestamp = timestamp;
     this.upVotes = upVotes;
   }
