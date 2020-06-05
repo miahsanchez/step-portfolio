@@ -34,22 +34,19 @@ import com.google.gson.Gson;
 public class DataServlet extends HttpServlet {
     
   private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
+  private final Gson gson = new Gson();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Query query = new Query("Youtube Idea").addSort("timestamp", SortDirection.ASCENDING);
 
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
     List<String> ideas = new ArrayList<>();
     for (Entity entity: results.asIterable()) {
         String idea = (String) entity.getProperty("idea");
-
         ideas.add(idea);
     }
-
-    Gson gson = new Gson();
 
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(ideas));
