@@ -60,7 +60,11 @@ function createIdeaElement(idea){
     const upVoteButton = document.createElement("button");
     upVoteButton.className = "upvote-button";
 
+    const numVotes = document.createElement("p");
+    numVotes.innerText = "0";
+
     ideaElement.appendChild(ideaTitle);
     ideaElement.appendChild(upVoteButton);
+    ideaElement.appendChild(numVotes);
     return ideaElement;
 }
