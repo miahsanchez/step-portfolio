@@ -19,11 +19,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List; 
+import com.google.gson.Gson;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.DatastoreService;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+/** Servlet that returns some example content. */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
     
@@ -31,8 +34,16 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello Miah!</h1>");
+
+    List<String> sampleContents = new ArrayList<String>();
+    sampleContents.add("My name is Miah");
+    sampleContents.add("Im from NYC");
+    sampleContents.add("I love coding!");
+
+    // Send the JSON as the response
+    String jsonComment = new Gson().toJson(sampleContents);
+    response.setContentType("application/json;");
+    response.getWriter().println(jsonComment);
   }
 
   @Override
