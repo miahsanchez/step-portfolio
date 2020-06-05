@@ -26,6 +26,6 @@ public final class Idea {
     this.id = id;
     this.idea = idea;
     this.timestamp = timestamp;
-    this.upVotes = upvotes;
+    this.upVotes = upVotes;
   }
 }
