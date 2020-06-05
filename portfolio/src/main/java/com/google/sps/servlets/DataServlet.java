@@ -60,7 +60,6 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      System.out.println("data  response: " + response);
       String userIdea = request.getParameter("user-input");
       long timestamp = System.currentTimeMillis();
 
