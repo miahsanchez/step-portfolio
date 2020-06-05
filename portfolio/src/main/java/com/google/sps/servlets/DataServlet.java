@@ -36,16 +36,15 @@ public class DataServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
     // TODO:  Make ArrayList more abstract aka make it a List.
-    ArrayList<String> sampleContents = new ArrayList<String>();
+    List<String> sampleContents = new ArrayList<String>();
     sampleContents.add("My name is Miah");
     sampleContents.add("Im from NYC");
     sampleContents.add("I love coding!");
 
     // Send the JSON as the response
-    String json = convertToJsonUsingGson(sampleContents);
     String jsonComment = new Gson().toJson(sampleContents);
     response.setContentType("application/json;");
-    response.getWriter().println(json);
+    response.getWriter().println(jsonComment);
   }
 
   @Override
