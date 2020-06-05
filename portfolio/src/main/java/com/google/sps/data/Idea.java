@@ -14,7 +14,7 @@
 
 package com.google.sps.data;
 
-/** An item on a todo list. */
+/** An item on a list of youtube ideas. */
 public final class Idea {
 
   private final long id;
