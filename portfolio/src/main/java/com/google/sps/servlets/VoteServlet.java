@@ -43,9 +43,8 @@ public class VoteServlet extends HttpServlet {
         long oldVotes = (long) entity.getProperty("upVotes");
         entity.setProperty("upVotes", oldVotes + 1);
         datastore.put(entity);
+      } catch (EntityNotFoundException e) {     
+          // Catch intentionally left blank.
       }
-      
-      //Catch intentionally left blank
-      catch (EntityNotFoundException e){}
   }
 }
