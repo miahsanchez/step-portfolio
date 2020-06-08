@@ -41,15 +41,18 @@ function labelClear(id) {
     document.getElementById(id).innerText = "";
 }
 
-/** 
- * Fetches the hello message from the server and adds it to the DOM.
-*  TODO: Refactor this code to be more dynamic
- */
- function getComments(){
-    fetch('/data').then(response => response.json()).then((stats) => {
-        document.getElementById('comment1').innerText = stats[0];
-        document.getElementById('comment2').innerText = stats[1];
-        document.getElementById('comment3').innerText = stats[2];
-
+function loadComments() {
+    fetch('/data').then(response => response.json()).then((ideas) => {
+        const ideaListElement = document.getElementById('idea-list');
+        ideas.forEach((idea) => {
+            ideaListElement.appendChild(createIdeaElement(idea));
+        })
     });
- }
+}
+
+function createIdeaElement(idea){
+    const ideaElement = document.createElement('li');
+    ideaElement.innerText = idea;
+    return ideaElement;
+}
+

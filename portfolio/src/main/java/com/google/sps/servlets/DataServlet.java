@@ -25,25 +25,34 @@ import com.google.gson.Gson;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
+import java.util.ArrayList;
+import java.util.List; 
+import com.google.gson.Gson;
 
 /** Servlet that returns some example content. */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
     
   private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
+  private final Gson gson = new Gson();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    Query query = new Query("Youtube Idea").addSort("timestamp", SortDirection.ASCENDING);
 
-    List<String> sampleContents = new ArrayList<String>();
-    sampleContents.add("My name is Miah");
-    sampleContents.add("Im from NYC");
-    sampleContents.add("I love coding!");
+    PreparedQuery results = datastore.prepare(query);
 
-    // Send the JSON as the response
-    String jsonComment = new Gson().toJson(sampleContents);
+    List<String> ideas = new ArrayList<>();
+    for (Entity entity: results.asIterable()) {
+        String idea = (String) entity.getProperty("idea");
+        ideas.add(idea);
+    }
+
     response.setContentType("application/json;");
-    response.getWriter().println(jsonComment);
+    response.getWriter().println(gson.toJson(ideas));
   }
 
   @Override
@@ -58,8 +67,6 @@ public class DataServlet extends HttpServlet {
            
       datastore.put(youtubeEntity);
 
-      response.setContentType("text/html;");
-      response.getWriter().println("Thanks for the idea! If I ever make a video about " + userIdea + " you'll be the first to know");
-
+      response.sendRedirect("/youtube.html");
   }
 }
