@@ -21,6 +21,7 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
+import com.google.sps.data.Idea;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +43,15 @@ public class DataServlet extends HttpServlet {
 
     PreparedQuery results = datastore.prepare(query);
 
-    List<String> ideas = new ArrayList<>();
+    List<Idea> ideas = new ArrayList<>();
     for (Entity entity: results.asIterable()) {
-        String idea = (String) entity.getProperty("idea");
-        ideas.add(idea);
+        long id = entity.getKey().getId();
+        String ideaName = (String) entity.getProperty("idea");
+        long timestamp = (long) entity.getProperty("timestamp");
+        long upVotes = (long) entity.getProperty("upVotes");
+
+        Idea newIdea = new Idea(id, ideaName, timestamp, upVotes);
+        ideas.add(newIdea);
     }
 
     response.setContentType("application/json;");
@@ -61,6 +67,7 @@ public class DataServlet extends HttpServlet {
       // Empty String will not be added as an idea, handled on client side.
       youtubeEntity.setProperty("idea", userIdea);
       youtubeEntity.setProperty("timestamp", timestamp);
+      youtubeEntity.setProperty("upVotes", 0);
            
       datastore.put(youtubeEntity);
 

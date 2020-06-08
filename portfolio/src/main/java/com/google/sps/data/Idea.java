@@ -20,9 +20,9 @@ public class Idea {
   private final long id;
   private final String ideaName;
   private final long timestamp;
-  private int upVotes;
+  private long upVotes;
 
-  public Idea(long id, String ideaName, long timestamp, int upVotes) {
+  public Idea(long id, String ideaName, long timestamp, long upVotes) {
     this.id = id;
     this.ideaName = ideaName;
     this.timestamp = timestamp;
