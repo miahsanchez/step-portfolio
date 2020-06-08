@@ -22,6 +22,7 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.sps.data.Idea;
 import java.io.IOException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +35,7 @@ import javax.servlet.http.HttpServletResponse;
 public class VoteServlet extends HttpServlet {
 
   private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(); 
+  private static final Logger LOGGER = Logger.getLogger(VoteServlet.class.getName());
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -45,9 +47,8 @@ public class VoteServlet extends HttpServlet {
         long oldVotes = (long) entity.getProperty("upVotes");
         entity.setProperty("upVotes", oldVotes + 1);
         datastore.put(entity);
-      } catch (EntityNotFoundException e) {     
-          Logger logger = Logger.getLogger(Idea.class.getName());
-          logger.warning("There is no entity to be modified.");
+      } catch (EntityNotFoundException e) {
+        LOGGER.log(Level.WARNING, "Idea entity not found: " + e.getMessage());
       }
   }
 }
