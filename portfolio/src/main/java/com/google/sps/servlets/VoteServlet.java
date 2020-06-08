@@ -16,15 +16,17 @@ package com.google.sps.servlets;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.sps.data.Idea;
 import java.io.IOException;
+import java.util.logging.Logger;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.google.appengine.api.datastore.Entity;
-import com.google.appengine.api.datastore.EntityNotFoundException;
 
 
 /** Servlet responsible for deleting tasks. */
@@ -44,7 +46,8 @@ public class VoteServlet extends HttpServlet {
         entity.setProperty("upVotes", oldVotes + 1);
         datastore.put(entity);
       } catch (EntityNotFoundException e) {     
-          // Catch intentionally left blank.
+          Logger logger = Logger.getLogger(Idea.class.getName());
+          logger.warning("There is no entity to be modified.");
       }
   }
 }
