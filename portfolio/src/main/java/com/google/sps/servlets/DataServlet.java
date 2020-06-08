@@ -14,23 +14,21 @@
 
 package com.google.sps.servlets;
 
-import java.io.IOException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List; 
-import com.google.gson.Gson;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
-import java.util.ArrayList;
-import java.util.List; 
 import com.google.gson.Gson;
+import com.google.sps.data.Idea;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse; 
 
 /** Servlet that returns some example content. */
 @WebServlet("/data")
@@ -45,10 +43,15 @@ public class DataServlet extends HttpServlet {
 
     PreparedQuery results = datastore.prepare(query);
 
-    List<String> ideas = new ArrayList<>();
+    List<Idea> ideas = new ArrayList<>();
     for (Entity entity: results.asIterable()) {
-        String idea = (String) entity.getProperty("idea");
-        ideas.add(idea);
+        long id = entity.getKey().getId();
+        String ideaName = (String) entity.getProperty("idea");
+        long timestamp = (long) entity.getProperty("timestamp");
+        long upVotes = (long) entity.getProperty("upVotes");
+
+        Idea newIdea = new Idea(id, ideaName, timestamp, upVotes);
+        ideas.add(newIdea);
     }
 
     response.setContentType("application/json;");
@@ -64,6 +67,7 @@ public class DataServlet extends HttpServlet {
       // Empty String will not be added as an idea, handled on client side.
       youtubeEntity.setProperty("idea", userIdea);
       youtubeEntity.setProperty("timestamp", timestamp);
+      youtubeEntity.setProperty("upVotes", 0);
            
       datastore.put(youtubeEntity);
 
