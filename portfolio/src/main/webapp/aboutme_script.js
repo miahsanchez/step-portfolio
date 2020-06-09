@@ -12,12 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+var map;
+const homeCoordinates = {
+    lat: 40.821520, 
+    lng: -73.955770
+}
+
 /** Creates a map and adds it to the page. */
 function createMap() {
-    const homeCoordinates = {
-        lat: 40.821520, lng: -73.955770
-    }
-    const map = new google.maps.Map(
+    map = new google.maps.Map(
       document.getElementById('map'),{
           center: homeCoordinates, zoom: 16,
           styles: 
@@ -181,12 +184,29 @@ function createMap() {
             ]
             }
     ]});
+    makeMarkers();
+}
+
+/** Changes the center of the map. */
+function changeCenter(lat, lng) {
+    map.setCenter({
+        lat: lat,
+        lng: lng
+    });
+}
+
+/** Creates all the marker that will be added to the map. */
+function makeMarkers() {
+    // Home marker. 
     const houseIcon = "/images/houseIcon.png";
-    const marker = new google.maps.Marker({
-        position: homeCoordinates, map: map, icon: houseIcon
+    const homeMarker = new google.maps.Marker({
+        position: homeCoordinates, 
+        map: map, 
+        icon: houseIcon
     });
     const infoWindow = new google.maps.InfoWindow({
         content:"The apartment I grew up in!"
     });
-    infoWindow.open(map, marker);
+    infoWindow.open(map, homeMarker);
+    });
 }
