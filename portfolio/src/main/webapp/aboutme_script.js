@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-var map;
+let map;
 const homeCoordinates = {
     lat: 40.821520, 
     lng: -73.955770
@@ -189,15 +189,11 @@ function createMap() {
 
 /** Changes the center of the map. */
 function changeCenter(lat, lng) {
-    map.setCenter({
-        lat: lat,
-        lng: lng
-    });
+    map.setCenter({lat, lng});
 }
 
 /** Creates all the markers that will be added to the map. */
 function makeMarkers() {
-    // Home marker. 
     const houseIcon = "/images/houseIcon.png";
     const homeMarker = new google.maps.Marker({
         position: homeCoordinates, 
