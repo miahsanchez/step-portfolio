@@ -181,6 +181,6 @@ function createMap() {
     ]});
     const houseIcon = "/images/houseIcon.png";
     const marker = new google.maps.Marker({position: homeCoordinates, map: map, icon: houseIcon});
-    var infowindow = new google.maps.InfoWindow({content:"The house I gew up in!"});
+    var infowindow = new google.maps.InfoWindow({content:"The apartment I grew up in!"});
     infowindow.open(map, marker);
 }
