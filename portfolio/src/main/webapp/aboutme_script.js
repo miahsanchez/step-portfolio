@@ -194,24 +194,31 @@ function changeCenter(lat, lng) {
 
 /** Creates all the markers that will be added to the map. */
 function makeMarkers() {
-    const houseIcon = "/images/houseIcon.png";
     const homeMarker = new google.maps.Marker({
         position: homeCoordinates, 
         map: map, 
-        icon: houseIcon
+        icon: "/images/houseIcon.png"
     });
     const infoWindow = new google.maps.InfoWindow({
         content:"The apartment I grew up in!"
     });
     infoWindow.open(map, homeMarker);
 
-    const cornellIcon = "/images/cornellIcon.png";
     const cornellMarker = new google.maps.Marker({
         position: {
             lat: 42.444759, 
             lng: -76.484306
         },
         map: map,
-        icon: cornellIcon
+        icon: "/images/cornellIcon.png"
+    });
+
+    const bronxMarker = new google.maps.Marker({
+        position: {
+            lat: 40.825770,
+            lng: -73.852760
+        },
+        map: map,
+        icon: "/images/heartIcon.png"
     });
 }
