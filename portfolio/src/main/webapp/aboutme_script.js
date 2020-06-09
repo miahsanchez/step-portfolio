@@ -221,4 +221,22 @@ function makeMarkers() {
         map: map,
         icon: "/images/heartIcon.png"
     });
+
+    const gwcMarker = new google.maps.Marker({
+        position: {
+            lat: 40.756989,
+            lng: -73.989708
+        },
+        map: map,
+        icon: "images/gwcIcon.png"
+    });
+
+    const drMarker = new google.maps.Marker({
+        position: {
+            lat: 18.483402,
+            lng: 	-69.929611
+        },
+        map: map,
+        icon: "/images/drIcon.png"
+    });
 }
