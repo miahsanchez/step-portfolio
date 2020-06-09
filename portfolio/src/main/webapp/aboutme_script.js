@@ -195,7 +195,7 @@ function changeCenter(lat, lng) {
     });
 }
 
-/** Creates all the marker that will be added to the map. */
+/** Creates all the markers that will be added to the map. */
 function makeMarkers() {
     // Home marker. 
     const houseIcon = "/images/houseIcon.png";
@@ -208,5 +208,4 @@ function makeMarkers() {
         content:"The apartment I grew up in!"
     });
     infoWindow.open(map, homeMarker);
-    });
 }
