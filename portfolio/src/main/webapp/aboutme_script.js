@@ -14,10 +14,10 @@
 
 /** Creates a map and adds it to the page. */
 function createMap() {
-
+    const homeCoordinates = {lat: 40.821520, lng: -73.955770}
     const map = new google.maps.Map(
       document.getElementById('map'),
-      {center: {lat: 40.821520, lng: -73.955770}, zoom: 16,
+      {center: homeCoordinates, zoom: 16,
       styles: 
         [
         {
@@ -179,4 +179,6 @@ function createMap() {
             ]
          }
     ]});
+    const houseIcon = "/images/houseIcon.png";
+    const marker = new google.maps.Marker({position: homeCoordinates, map: map, icon: houseIcon});
 }
