@@ -204,4 +204,14 @@ function makeMarkers() {
         content:"The apartment I grew up in!"
     });
     infoWindow.open(map, homeMarker);
+
+    const cornellIcon = "/images/cornellIcon.png";
+    const cornellMarker = new google.maps.Marker({
+        position: {
+            lat: 42.444759, 
+            lng: -76.484306
+        },
+        map: map,
+        icon: cornellIcon
+    });
 }
