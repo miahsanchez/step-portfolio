@@ -234,7 +234,7 @@ function makeMarkers() {
     const drMarker = new google.maps.Marker({
         position: {
             lat: 18.483402,
-            lng: 	-69.929611
+            lng: -69.929611
         },
         map: map,
         icon: "/images/drIcon.png"
