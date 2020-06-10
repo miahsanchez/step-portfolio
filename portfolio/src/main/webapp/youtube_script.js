@@ -52,9 +52,9 @@ function addVote(idea) {
     fetch('/vote', {method: 'POST', body: params});
 }
 
-let tag = document.createElement('script');
+const tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
-let firstScriptTag = document.getElementsByTagName('script')[0];
+const firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 let player;
