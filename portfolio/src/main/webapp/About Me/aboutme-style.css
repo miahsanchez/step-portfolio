@@ -8,3 +8,9 @@ span {
     text-decoration: underline;
     font-weight: bold;
 }
+
+#marker-image {
+    height: 400px;
+    width:400px;
+    border: 0;
+}
