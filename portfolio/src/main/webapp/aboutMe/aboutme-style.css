@@ -1,0 +1,15 @@
+#map {
+  border: thin solid black;
+  height: 500px;
+  width: 500px;
+}
+
+span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#marker-image {
+    height: 600px;
+    width: 600px;
+}
