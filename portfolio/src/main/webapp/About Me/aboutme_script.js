@@ -204,6 +204,10 @@ function makeMarkers() {
     });
     infoWindow.open(map, homeMarker);
 
+    homeMarker.addListener('click', function() {
+          addMarkerImage("/images/hamilton_heights.jpg", "Hamilton Heights");
+        });
+
     const cornellMarker = new google.maps.Marker({
         position: {
             lat: 42.444759, 
@@ -228,7 +232,7 @@ function makeMarkers() {
             lng: -73.989708
         },
         map: map,
-        icon: "images/gwcIcon.png"
+        icon: "/images/gwcIcon.png"
     });
 
     const drMarker = new google.maps.Marker({
@@ -239,4 +243,11 @@ function makeMarkers() {
         map: map,
         icon: "/images/drIcon.png"
     });
+}
+
+/** Adds image with source src to the page. */
+function addMarkerImage(src, alt) {
+    let image = document.getElementById('marker-image');
+    image.setAttribute("src", src);
+    image.setAttribute("alt", alt);
 }
