@@ -52,12 +52,12 @@ function addVote(idea) {
     fetch('/vote', {method: 'POST', body: params});
 }
 
-var tag = document.createElement('script');
+let tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
+let firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-var player;
+let player;
 /** Creates an iFrame and youtube player */
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -77,7 +77,7 @@ function onPlayerReady(event) {
 }
 
 /** Plays the first five seconds of the youtube video. */
-var done = false;
+let done = false;
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING && !done) {
         setTimeout(stopVideo, 5000);
