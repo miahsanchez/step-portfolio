@@ -29,9 +29,9 @@ function loadColors() {
          ['Indigo', colorVotes['indigo'], '#4b0082'],
          ['Violet', colorVotes['violet'], '#9400d3']
       ]); 
-
-       const view = new google.visualization.DataView(data);
-       view.setColumns([0, 1,
+      
+      const view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
                     { calc: "stringify",
                       sourceColumn: 1,
                       type: "string",
