@@ -19,13 +19,6 @@ google.charts.setOnLoadCallback(loadColors);
 /** Creates a chart and adds it to the page. */
 function loadColors() {
     fetch('/colors').then(response => response.json()).then((colorVotes) => {
-        // const data = new google.visualization.DataTable();
-        // data.addColumn('string', 'Color');
-        // data.addColumn('number', 'Votes');
-        // Object.keys(colorVotes).forEach((color) => {
-        //     data.addRow([color, colorVotes[color]]);
-        // });   
-
         const data = google.visualization.arrayToDataTable([
          ['Color', 'Votes', { role: 'style' }],
          ['Red', colorVotes['red'], '#ff0000'],          
@@ -38,7 +31,7 @@ function loadColors() {
       ]); 
 
        const view = new google.visualization.DataView(data);
-        view.setColumns([0, 1,
+       view.setColumns([0, 1,
                     { calc: "stringify",
                       sourceColumn: 1,
                       type: "string",
