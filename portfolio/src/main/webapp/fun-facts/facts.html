@@ -9,6 +9,24 @@
   </head>
   <body>
       <h1>My favorite color</h1>
+      <form action="/colors" method="POST">
+          <input type="radio" id="red" name="color" value="red">
+          <label for="red">Red</label><br>
+          <input type="radio" id="orange" name="color" value="orange">
+          <label for="orange">Orange</label><br>
+          <input type="radio" id="yellow" name="color" value="yellow">
+          <label for="yellow">Yellow</label><br>
+          <input type="radio" id="green" name="color" value="green">
+          <label for="green">Green</label><br>
+          <input type="radio" id="blue" name="color" value="blue">
+          <label for="blue">Blue</label><br>
+          <input type="radio" id="indigo" name="color" value="indigo">
+          <label for="indigo">Indigo</label><br>
+          <input type="radio" id="violet" name="color" value="violet">
+          <label for="violet">Violet</label><br>
+
+          <input type="submit" value="Submit">
+      </form>
       <div id="color-chart"></div>
   </body>
 </html>
