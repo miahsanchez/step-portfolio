@@ -14,10 +14,10 @@
 
 package com.google.sps.servlets;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
+import com.google.gson.Gson;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,11 +26,24 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet responsible for creating new tasks. */
 @WebServlet("/colors")
 public class ColorServlet extends HttpServlet {
+  
+  private final Gson gson = new Gson();
+  private Map<String, Integer> colorVotes = new HashMap<>();
+
+  @Override
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+      response.setContentType("application/json");
+      response.getWriter().println(gson.toJson(colorVotes));
+  }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
       String color = request.getParameter("color");
-      System.out.println("The color is: " + color);
-      response.sendRedirect("facts.html");
-  }
+      int currentVotes = colorVotes.containsKey(color) ? colorVotes.get(color): 0;
+      colorVotes.put(color, currentVotes + 1);
+
+      response.sendRedirect("/fun-facts/facts.html");
+    }
+
+  
 }

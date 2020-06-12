@@ -14,37 +14,45 @@
 
 
 google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(loadColors);
 
 /** Creates a chart and adds it to the page. */
-function drawChart() {
-    const data = google.visualization.arrayToDataTable([
-         ['Color', 'Votes', { role: 'style' }],
-         ['Red', 1, '#ff0000'],          
-         ['Orange', 1, '#ff7f00'],
-         ['Yellow', 1, '#ffff00'],
-         ['Green', 1, '#00ff00' ],
-         ['Blue', 1, '#0000ff'],
-         ['Indigo', 1, '#4b0082'],
-         ['Violet', 1, '#9400d3']
-      ]);
+function loadColors() {
+    fetch('/colors').then(response => response.json()).then((colorVotes) => {
+        // const data = new google.visualization.DataTable();
+        // data.addColumn('string', 'Color');
+        // data.addColumn('number', 'Votes');
+        // Object.keys(colorVotes).forEach((color) => {
+        //     data.addRow([color, colorVotes[color]]);
+        // });   
 
-    const view = new google.visualization.DataView(data);
-    view.setColumns([0, 1,
+        const data = google.visualization.arrayToDataTable([
+         ['Color', 'Votes', { role: 'style' }],
+         ['Red', colorVotes['red'], '#ff0000'],          
+         ['Orange', colorVotes['orange'], '#ff7f00'],
+         ['Yellow', colorVotes['yellow'], '#ffff00'],
+         ['Green', colorVotes['green'], '#00ff00' ],
+         ['Blue', colorVotes['blue'], '#0000ff'],
+         ['Indigo', colorVotes['indigo'], '#4b0082'],
+         ['Violet', colorVotes['violet'], '#9400d3']
+      ]); 
+
+       const view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
                     { calc: "stringify",
                       sourceColumn: 1,
                       type: "string",
                       role: "annotation" },
                       2]);
 
-    const options = {
-     'title': 'Your Favorite Colors',
-     'width':500,
-     'height':400,
-     bar: {groupWidth: "90%"},
-     legend: { position: "none" },
-    };
+        const options = {
+            'title': 'Favorite Colors',
+            'width': 600,
+            'height': 500
+        };
 
-    const chart = new google.visualization.BarChart(document.getElementById("color-chart"));
-    chart.draw(view, options);
+        const chart = new google.visualization.ColumnChart(
+            document.getElementById('color-chart'));
+        chart.draw(view, options);
+    });
 }
