@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ColorServlet extends HttpServlet {
   
   private final Gson gson = new Gson();
-  private Map<String, Integer> colorVotes = new HashMap<>();
+  private final Map<String, Integer> colorVotes = new HashMap<>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

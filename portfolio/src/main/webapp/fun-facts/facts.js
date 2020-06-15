@@ -38,14 +38,14 @@ function loadColors() {
                       role: "annotation" },
                       2]);
 
-        const options = {
-            'title': 'Favorite Colors',
-            'width': 600,
-            'height': 500
-        };
+      const options = {
+          'title': 'Favorite Colors',
+          'width': 600,
+          'height': 500
+      };
 
-        const chart = new google.visualization.ColumnChart(
-            document.getElementById('color-chart'));
-        chart.draw(view, options);
+      const chart = new google.visualization.ColumnChart(
+          document.getElementById('color-chart'));
+      chart.draw(view, options);
     });
 }
