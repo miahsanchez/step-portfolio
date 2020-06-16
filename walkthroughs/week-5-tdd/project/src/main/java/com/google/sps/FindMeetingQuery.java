@@ -55,8 +55,8 @@ public final class FindMeetingQuery {
                 }else {
                     remOverlap = TimeRange.fromStartEnd(e.getWhen().end(), t.end(), false);
                 }
-                if ()
-                modifier.add(remOverlap); 
+                if (remOverlap.duration() >= request.getDuration()){
+                modifier.add(remOverlap);}
             }
         }
         times.clear();
