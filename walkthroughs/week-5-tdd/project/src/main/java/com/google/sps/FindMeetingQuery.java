@@ -33,6 +33,7 @@ public final class FindMeetingQuery {
         Set<TimeRange> modifier = new HashSet<>();
         modifier.addAll(times);
         if (request.getAttendees().containsAll(e.getAttendees())){
+            // Loop through the free time to see when events conflict with meetings
             for(TimeRange t: times){
                 if (t.contains(e.getWhen())){
                     modifier.remove(t);
