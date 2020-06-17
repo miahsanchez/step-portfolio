@@ -31,7 +31,7 @@ public final class FindMeetingQuery {
     }
     for (Event e: events) {
         Set<TimeRange> modifier = new HashSet<>();
-        modifier.addAll(times); // i could also do something where I order the events from start to end and then just add the gaps in between them
+        modifier.addAll(times);
         if (request.getAttendees().containsAll(e.getAttendees())){
             for(TimeRange t: times){
                 if (t.contains(e.getWhen())){
