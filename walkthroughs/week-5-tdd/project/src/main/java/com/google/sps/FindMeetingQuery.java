@@ -23,8 +23,6 @@ import java.util.HashSet;
 
 public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
-    request.getAttendees();
-    Collection<String> meetingMembers = request.getAttendees();
     Set<TimeRange> times = new HashSet<>();
     if (request.getDuration() < 24*60){
         times.add(TimeRange.WHOLE_DAY);
