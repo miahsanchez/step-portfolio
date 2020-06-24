@@ -23,8 +23,6 @@ import java.util.HashSet;
 
 public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
-    request.getAttendees();
-    Collection<String> meetingMembers = request.getAttendees();
     Set<TimeRange> times = new HashSet<>();
     if (request.getDuration() < 24*60){
         times.add(TimeRange.WHOLE_DAY);
@@ -33,6 +31,7 @@ public final class FindMeetingQuery {
         Set<TimeRange> modifier = new HashSet<>();
         modifier.addAll(times);
         if (request.getAttendees().containsAll(e.getAttendees())){
+            // Loop through the free time to see when events conflict with meetings
             for(TimeRange t: times){
                 if (t.contains(e.getWhen())){
                     modifier.remove(t);
@@ -60,6 +59,11 @@ public final class FindMeetingQuery {
             times.clear();
             times.addAll(modifier);
         }   
+    }
+    for(Event e: events){
+        for(String person: request.getOptionalAttendees()) {
+            if e.getAttendees().contains(person){}   
+        }
     }
     ArrayList<TimeRange> timesList = new ArrayList<>(times);
     Collections.sort(timesList, TimeRange.ORDER_BY_START);
