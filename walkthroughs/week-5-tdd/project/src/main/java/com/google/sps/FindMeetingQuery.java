@@ -27,7 +27,7 @@ public final class FindMeetingQuery {
     if (request.getDuration() < 24*60){
         times.add(TimeRange.WHOLE_DAY);
     }
-    for (Event e: events) {
+    for (Event e: events) { //maybe we could remove all the events that have been accounted for
         Set<TimeRange> modifier = new HashSet<>();
         modifier.addAll(times);
         if (request.getAttendees().containsAll(e.getAttendees())){
@@ -59,6 +59,14 @@ public final class FindMeetingQuery {
             times.clear();
             times.addAll(modifier);
         }   
+    }
+    // need to add times for the optional testing! this is essentially going to be the same thing as 
+    // before except now it's with the optional attendees 
+    // going to need something to see if the time actually works before seeing if we can add it
+    for(Event e: events){
+        for(String person: request.getOptionalAttendees()) {
+            if e.getAttendees().contains(person)   
+        }
     }
     ArrayList<TimeRange> timesList = new ArrayList<>(times);
     Collections.sort(timesList, TimeRange.ORDER_BY_START);
