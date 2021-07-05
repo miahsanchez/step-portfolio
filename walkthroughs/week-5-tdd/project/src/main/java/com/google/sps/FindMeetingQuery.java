@@ -14,10 +14,55 @@
 
 package com.google.sps;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
+import java.util.HashSet;
 
 public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
-    throw new UnsupportedOperationException("TODO: Implement this method.");
+    request.getAttendees();
+    Collection<String> meetingMembers = request.getAttendees();
+    Set<TimeRange> times = new HashSet<>();
+    if (request.getDuration() < 24*60){
+        times.add(TimeRange.WHOLE_DAY);
+    }
+    for (Event e: events) {
+        Set<TimeRange> modifier = new HashSet<>();
+        modifier.addAll(times);
+        if (request.getAttendees().containsAll(e.getAttendees())){
+            for(TimeRange t: times){
+                if (t.contains(e.getWhen())){
+                    modifier.remove(t);
+                    TimeRange beforeContainer = TimeRange.fromStartEnd(t.start(), e.getWhen().start(), false);
+                    TimeRange afterContainer = TimeRange.fromStartEnd(e.getWhen().end(), t.end(), false);
+                    if (beforeContainer.duration() >= request.getDuration()) {
+                        modifier.add(beforeContainer);
+                    }
+                    if (afterContainer.duration() >= request.getDuration()) {
+                        modifier.add(afterContainer);
+                    }
+                }
+                else if (t.overlaps(e.getWhen())) {
+                    modifier.remove(t);
+                    TimeRange remOverlap;
+                    if (t.start() < e.getWhen().start()) {
+                        remOverlap = TimeRange.fromStartEnd(t.start(), e.getWhen().start(), false);
+                    }else {
+                        remOverlap = TimeRange.fromStartEnd(e.getWhen().end(), t.end(), false);
+                    }
+                    if (remOverlap.duration() >= request.getDuration()){
+                    modifier.add(remOverlap);}
+                }
+            }
+            times.clear();
+            times.addAll(modifier);
+        }   
+    }
+    ArrayList<TimeRange> timesList = new ArrayList<>(times);
+    Collections.sort(timesList, TimeRange.ORDER_BY_START);
+    return timesList;
   }
 }
